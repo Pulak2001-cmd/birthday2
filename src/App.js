@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+
+import { useEffect, useState } from 'react';
 import './App.css';
+import Mainpage from './components/Mainpage';
+import Welcome from './components/Welcome';
 
 function App() {
+  const [first, setfirst] = useState("home");
+  useEffect(() => {
+    setTimeout(() => {
+      setfirst("newhome");
+    }, 5000);
+  })
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    {first === "home" ? <Welcome /> : <Mainpage />}
+    </>
   );
 }
 
